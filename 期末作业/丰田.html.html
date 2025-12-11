@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丰田汽车 - 创新驱动未来</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    background-image: url(202212051433022452759802405_3000x2000_w1.jpeg);
+        }
+        
+        /* 头部样式 */
+        header {
+    background-color: #070606;
+    color: white;
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-login {
+            background-color: white;
+            color: #e60012;
+        }
+        
+        .btn-register {
+            background-color: #222;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            min-height: calc(100vh - 180px);
+            padding: 40px 0;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 首页样式 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .models-section {
+            margin-top: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #e60012;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .model-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .model-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .model-info {
+            padding: 25px;
+        }
+        
+        .model-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .model-description {
+            color: #666;
+            margin-bottom: 20px;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        /* 登录/注册表单样式 */
+        .auth-form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #222;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #e60012;
+            outline: none;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background-color: #e60012;
+            color: white;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+        }
+        
+        .form-footer a {
+            color: #e60012;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: #e60012;
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 音乐播放器样式 */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 99;
+        }
+        
+        .music-info {
+            margin-right: 15px;
+            max-width: 200px;
+        }
+        
+        .music-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #222;
+        }
+        
+        .music-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .music-btn {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .music-btn:hover {
+            background-color: #c4000f;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .auth-buttons {
+                margin-top: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-player {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+            
+            .music-info {
+                display: none;
+            }
+        }
+        
+        /* 丰田品牌颜色 */
+        .toyota-red {
+            color: #e60012;
+        }
+        
+        .toyota-bg-red {
+            background-color: #e60012;
+        }
+    </style>
+</head>
+<body>
+    <!-- 音乐播放器 -->
+    <div class="music-player">
+        <div class="music-info">
+            <div class="music-title">男人的音乐：丰田品牌音乐</div>
+        </div>
+        <div class="music-controls">
+            <button class="music-btn" id="playMusic">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="music-btn" id="pauseMusic" style="display: none;">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button class="music-btn" id="stopMusic">
+                <i class="fas fa-stop"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-car logo-icon"></i>
+                    <h1>丰田霸道</h1>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-page="home">首页</a></li>
+                        <li><a href="#" class="nav-link" data-page="models">车型展示</a></li>
+                        <li><a href="#" class="nav-link" data-page="technology">技术创新</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">关于丰田</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-login" id="showLogin">用户登录</button>
+                    <button class="btn btn-register" id="showRegister">用户注册</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content container">
+        <!-- 首页 -->
+        <div class="page active" id="home">
+            <div class="hero">
+                <h2>丰田汽车 - 创新驱动未来，霸道无需男人多言</h2>
+                <p>自1937年成立以来，丰田一直致力于通过高品质的汽车产品和技术创新，为全球用户提供卓越的出行体验。我们的使命是创造更美好的移动社会。</p>
+                <button class="btn btn-login" style="font-size: 1.2rem; padding: 15px 30px;">探索更多</button>
+            </div>
+            
+            <div class="models-section">
+                <h2 class="section-title">畅销车型</h2>
+                <div class="models-grid">
+                    <!-- 车型1 -->
+                    <div class="model-card">
+                        <div class="model-image">
+                        <img src="97b48f3f-389b-4409-8c70-bb7883e42a67.jpg" width="300" height="200" alt=""/> </div>
+                        <div class="model-info">
+                            <h3 class="model-name">丰田凯美瑞</h3>
+                            <p class="model-description">丰田凯美瑞以其卓越的舒适性、可靠性和燃油经济性成为全球最畅销的中型轿车之一。最新款采用了混合动力技术，实现了更低的排放和更高的效率。</p>
+                            <button class="btn toyota-bg-red" style="color: white; width: 100%;">了解更多</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 车型2 -->
+                    <div class="model-card">
+                        <div class="model-image">
+                        <img src="cc34a28cc34d40749a820415cd352b6a.jpg" width="300" height="200" alt=""/> </div>
+                        <div class="model-info">
+                            <h3 class="model-name">丰田RAV4</h3>
+                            <p class="model-description">作为城市SUV的标杆，RAV4结合了轿车的舒适性和SUV的多功能性。配备先进的安全系统和智能四驱技术，适应各种路况。</p>
+                            <button class="btn toyota-bg-red" style="color: white; width: 100%;">了解更多</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 车型3 -->
+                    <div class="model-card">
+                        <div class="model-image">
+                        <img src="20181128151420794493786911927.jpg" width="300" height="200" alt=""/> </div>
+                        <div class="model-info">
+                            <h3 class="model-name">丰田普锐斯</h3>
+                            <p class="model-description">世界上第一款大规模生产的混合动力汽车，普锐斯代表了丰田在环保技术上的领先地位。以其出色的燃油效率和低排放著称。</p>
+                            <button class="btn toyota-bg-red" style="color: white; width: 100%;">了解更多</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 车型展示页面 -->
+        <div class="page" id="models">
+            <h2 class="section-title">丰田全系车型</h2>
+            
+            <div class="models-grid">
+                <!-- 车型1 -->
+                <div class="model-card">
+                    <div class="model-image">
+                    <img src="R-C.jpg" width="300" height="200" alt=""/> </div>
+                    <div class="model-info">
+                        <h3 class="model-name">丰田卡罗拉</h3>
+                        <p class="model-description">全球销量最高的车型，以可靠性和经济性著称。最新一代卡罗拉采用了TNGA平台，提供了更好的驾驶体验和安全性能。</p>
+                        <div class="model-specs">
+                            <p><strong>动力系统：</strong>1.8L混合动力 / 1.5L汽油</p>
+                            <p><strong>油耗：</strong>3.5-5.5L/100km</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 车型2 -->
+                <div class="model-card">
+                    <div class="model-image">
+                    <img src="1000x0_q100_autohomecar__Chtk2Wb76E6AQxK9AAQc9UYXENA03.jpeg" width="300" height="200" alt=""/> </div>
+                    <div class="model-info">
+                        <h3 class="model-name">丰田汉兰达</h3>
+                        <p class="model-description">大型7座SUV，适合家庭使用。宽敞的内部空间和强大的牵引能力，同时提供舒适的乘坐体验和先进的娱乐系统。</p>
+                        <div class="model-specs">
+                            <p><strong>动力系统：</strong>2.5L混合动力 / 3.5L V6</p>
+                            <p><strong>座位数：</strong>7座 / 8座</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 车型3 -->
+                <div class="model-card">
+                    <div class="model-image">
+                    <img src="1000x0_q100_autohomecar__ChxkPmZxIvKAFw2gABj_ETiNTPQ996.png" width="300" height="200" alt=""/> </div>
+                    <div class="model-info">
+                        <h3 class="model-name">丰田亚洲龙</h3>
+                        <p class="model-description">豪华中型轿车，结合了优雅设计和先进技术。提供卓越的驾驶舒适性和丰富的科技配置，满足商务和家庭需求。</p>
+                        <div class="model-specs">
+                            <p><strong>动力系统：</strong>2.5L混合动力 / 2.0L汽油</p>
+                            <p><strong>特点：</strong>全景天窗，JBL音响</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 技术创新页面 -->
+        <div class="page" id="technology">
+            <h2 class="section-title">技术创新</h2>
+            
+            <div class="auth-form-container">
+                <h3 class="toyota-red">丰田混合动力技术</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田自1997年推出普锐斯以来，一直是混合动力技术的领导者。我们的混合动力系统通过智能管理发动机和电动机的协作，实现了卓越的燃油效率和低排放。</p>
+                
+                <h3 class="toyota-red" style="margin-top: 30px;">丰田安全感知系统</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田安全感知（TSS）是一套先进的主动安全技术套件，包括预碰撞系统、车道偏离警示、自适应巡航控制和自动远光灯等功能，为驾驶者提供全方位的保护。</p>
+                
+                <h3 class="toyota-red" style="margin-top: 30px;">氢燃料电池技术</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田Mirai是世界上第一款量产的氢燃料电池汽车，它只排放水蒸气，实现了真正的零排放驾驶。这项技术代表了丰田对可持续移动的承诺。</p>
+                
+                <div class="model-image" style="height: 200px; margin-top: 30px; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
+                <img src="R-C (1).jpg" width="300" height="200" alt=""/> </div>
+            </div>
+        </div>
+
+        <!-- 关于丰田页面 -->
+        <div class="page" id="about">
+            <h2 class="section-title">关于丰田</h2>
+            
+            <div class="auth-form-container">
+                <h3 class="toyota-red">公司历史</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田汽车公司成立于1937年，由丰田喜一郎创立。公司最初以生产织机起家，后来转向汽车制造。如今，丰田已成为全球最大的汽车制造商之一，业务遍及170多个国家和地区。</p>
+                
+                <h3 class="toyota-red" style="margin-top: 30px;">生产理念</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田生产系统（TPS）是丰田的核心竞争力，强调"准时生产"和"自动化"。这一系统不仅提高了生产效率，还确保了产品质量，被全球制造业广泛学习和应用。</p>
+                
+                <h3 class="toyota-red" style="margin-top: 30px;">企业社会责任</h3>
+                <p style="margin: 20px 0; line-height: 1.8;">丰田致力于通过汽车创造富裕社会，积极参与环保、安全和教育等领域的公益活动。我们的目标是到2050年实现"丰田环境挑战2050"，大幅减少汽车生命周期中的二氧化碳排放。</p>
+                
+                <div class="model-image" style="height: 200px; margin-top: 30px; display: flex; align-items: center; justify-content: center; background-color: #f0f0f0;">
+                <img src="R-C (2).jpg" width="300" height="200" alt=""/> </div>
+            </div>
+        </div>
+
+        <!-- 登录页面 -->
+        <div class="page" id="login">
+            <div class="auth-form-container">
+                <div class="auth-form">
+                    <h2>用户登录</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">电子邮箱</label>
+                            <input type="email" id="loginEmail" placeholder="请输入您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">密码</label>
+                            <input type="password" id="loginPassword" placeholder="请输入您的密码" required>
+                        </div>
+                        <button type="submit" class="btn btn-submit">登录</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>还没有账户？ <a href="#" id="switchToRegister">立即注册</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 注册页面 -->
+        <div class="page" id="register">
+            <div class="auth-form-container">
+                <div class="auth-form">
+                    <h2>用户注册</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerName">姓名</label>
+                            <input type="text" id="registerName" placeholder="请输入您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">电子邮箱</label>
+                            <input type="email" id="registerEmail" placeholder="请输入您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">密码</label>
+                            <input type="password" id="registerPassword" placeholder="请设置密码（至少6位）" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">确认密码</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="请再次输入密码" required>
+                        </div>
+                        <button type="submit" class="btn btn-submit">注册</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>已有账户？ <a href="#" id="switchToLogin">立即登录</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>丰田汽车</h3>
+                    <p style="color: #aaa; margin-top: 20px;">创造更美好的移动社会，为全球用户提供高品质的汽车产品和技术创新。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">首页</a></li>
+                        <li><a href="#" class="nav-link" data-page="models">车型展示</a></li>
+                        <li><a href="#" class="nav-link" data-page="technology">技术创新</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">关于丰田</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 山西省晋中市</li>
+                        <li><i class="fas fa-phone"></i> +81 15555555555</li>
+                        <li><i class="fas fa-envelope"></i> info@toyota.co.jp</li>
+                        <li><i class="fas fa-globe"></i> www.toyota-global.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>关注我们</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-weibo"></i> 丰田中国微博</a></li>
+                        <li><a href="#"><i class="fab fa-weixin"></i> 丰田微信公众号</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 丰田汽车公司 版权所有 | 设计与开发期末作业网站</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 页面切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有页面元素
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const showLoginBtn = document.getElementById('showLogin');
+            const showRegisterBtn = document.getElementById('showRegister');
+            const switchToLogin = document.getElementById('switchToLogin');
+            const switchToRegister = document.getElementById('switchToRegister');
+            
+            // 切换页面函数
+            function showPage(pageId) {
+                // 隐藏所有页面
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                document.getElementById(pageId).classList.add('active');
+                
+                // 更新导航链接激活状态
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // 如果切换到登录或注册页面，移除导航激活状态
+                if (pageId === 'login' || pageId === 'register') {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                }
+            }
+            
+            // 导航链接点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // 登录/注册按钮点击事件
+            showLoginBtn.addEventListener('click', function() {
+                showPage('login');
+            });
+            
+            showRegisterBtn.addEventListener('click', function() {
+                showPage('register');
+            });
+            
+            // 登录/注册表单切换
+            switchToLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage('login');
+            });
+            
+            switchToRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage('register');
+            });
+            
+            // 表单提交处理
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // 简单验证
+                if (email && password) {
+                    alert(`登录成功！欢迎使用丰田汽车展示网站。\n邮箱：${email}`);
+                    showPage('home');
+                } else {
+                    alert('请输入完整的登录信息！');
+                }
+            });
+            
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('registerConfirmPassword').value;
+                
+                // 简单验证
+                if (!name || !email || !password || !confirmPassword) {
+                    alert('请填写所有注册信息！');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('两次输入的密码不一致！');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    alert('密码长度至少为6位！');
+                    return;
+                }
+                
+                alert(`注册成功！\n姓名：${name}\n邮箱：${email}\n欢迎加入丰田汽车大家庭！`);
+                showPage('home');
+            });
+            
+            // 背景音乐控制
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            const playMusicBtn = document.getElementById('playMusic');
+            const pauseMusicBtn = document.getElementById('pauseMusic');
+            const stopMusicBtn = document.getElementById('stopMusic');
+            
+            // 播放音乐
+            playMusicBtn.addEventListener('click', function() {
+                backgroundMusic.play();
+                playMusicBtn.style.display = 'none';
+                pauseMusicBtn.style.display = 'flex';
+            });
+            
+            // 暂停音乐
+            pauseMusicBtn.addEventListener('click', function() {
+                backgroundMusic.pause();
+                pauseMusicBtn.style.display = 'none';
+                playMusicBtn.style.display = 'flex';
+            });
+            
+            // 停止音乐
+            stopMusicBtn.addEventListener('click', function() {
+                backgroundMusic.pause();
+                backgroundMusic.currentTime = 0;
+                pauseMusicBtn.style.display = 'none';
+                playMusicBtn.style.display = 'flex';
+            });
+            
+            // 初始化页面
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
